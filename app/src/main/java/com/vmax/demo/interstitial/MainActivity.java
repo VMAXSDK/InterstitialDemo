@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void cacheInterstitial()
     {
-        /** Initializing vmaxAdView with an Adspot, Repalce With the adspot Configured by you */
+        /** Initializing vmaxAdView with an Adspot,*/
          vmaxAdView = new VmaxAdView(this,"68cda943",VmaxAdView.UX_INTERSTITIAL);
 
         /** To Fetch Your AdvId you can check your device's Google settings under ads subMenu Or You can Run this app Once and check
@@ -71,25 +71,20 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
+            public void onAdClose() {
+
+            }
+
+            @Override
+            public void onAdMediaEnd(boolean b, long l) {
+
+            }
+
+            @Override
             public void onAdReady(VmaxAdView adView) {
 
             }
 
-            @Override
-            public void onAdDismissed(VmaxAdView adView) {
-         /** Handle Visibility Of Ad When Dismissed*/
-
-               }
-
-            @Override
-            public void onAdStarted(VmaxAdView adView) {
-
-            }
-
-            @Override
-            public void onAdEnd(boolean isVideoCompleted, long reward) {
-
-            }
 
         });
 
@@ -102,24 +97,7 @@ public class MainActivity extends AppCompatActivity {
    
     /** Handle vmaxAdView object for Activity Lifecycle changes */
 
-    @Override
-    protected void onPause() {
-        if (vmaxAdView != null) {
-            /** To Pause Refresh Of The Ad While Activity Isn't in Foreground */
-            vmaxAdView.onPause();
-        }
 
-        super.onPause();
-    }
-    @Override
-    protected void onResume() {
-        if (vmaxAdView != null) {
-            /** To Resume Refresh Of The Ad While Activity Comes Back To Foreground */
-
-            vmaxAdView.onResume();
-        }
-        super.onResume();
-    }
     @Override
     protected void onDestroy() {
         if (vmaxAdView != null) {
@@ -131,16 +109,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        if (vmaxAdView != null) {
 
-            /** To Reconfigure vmaxAdview According To Configuration Changes*/
-            vmaxAdView.onConfigurationChanged();
-        }
 
-    }
+
 
 
 }
